@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  posts-db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: senhaForte123
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: senhaForte123
+      MYSQL_DATABASE: posts_service
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_TCP_PORT: 3306
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - geek-theories-network
+
+networks:
+  geek-theories-network:
+    driver: bridge
