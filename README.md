@@ -15,7 +15,7 @@ Blog sobre Teorias Geek em que os usuários podem se registrar, criar, publicar 
 <h2 id="entities">👥&nbsp; Entidades </h2>
 
 <div style="display: flex; gap: 10px; justify-content: center">
-  <img src="./.github/imgs/posts.png" alt="Posts Table" width="50%" height="300px">
+  <img src="./.github/imgs/posts.png" alt="Posts Table" width="50%" height="">
 </div>
 
 ---
