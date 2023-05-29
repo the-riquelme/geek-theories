@@ -1,4 +1,4 @@
-<h1 align="center"> International Library (Livraria Internacional) </h1>
+<h1 align="center"> Geek Theories </h1>
 
 <div align="center">
  <a href="#about">Sobre</a> |
@@ -6,7 +6,7 @@
  <a href="#microservices">Microserviços</a> |
 </div>
 
-<h2 id="about">💡&nbsp; Geek Theories</h2>
+<h2 id="about">💡&nbsp; Sobre o projeto </h2>
 
 Blog sobre Teorias Geek em que os usuários podem se registrar, criar, publicar e comentar postagens.
 
