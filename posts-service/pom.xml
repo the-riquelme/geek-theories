@@ -10,9 +10,9 @@
     <!-- lookup parent from repository -->
   </parent>
   <groupId>br.com.riquelme</groupId>
-  <artifactId>cambio-service</artifactId>
+  <artifactId>posts-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>cambio-service</name>
+  <name>posts-service</name>
   <description>Demo project for Spring Boot</description>
   <properties>
     <java.version>17</java.version>
