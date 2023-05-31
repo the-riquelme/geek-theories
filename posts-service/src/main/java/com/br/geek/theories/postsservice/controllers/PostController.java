@@ -1,6 +1,10 @@
 package com.br.geek.theories.postsservice.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,10 +20,10 @@ public class PostController {
 	private PostRepository repository;
 
 	@GetMapping("/all")
-	public Iterable<PostModel> getAllPosts() {
+	public ResponseEntity<List<PostModel>> getAllPosts() {
     var posts = repository.findAll();
 
-    return posts;
+    return new ResponseEntity<>(posts, HttpStatus.OK);
 	}
   
 }
