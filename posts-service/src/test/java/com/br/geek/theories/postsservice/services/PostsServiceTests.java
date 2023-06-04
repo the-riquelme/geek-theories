@@ -16,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.br.geek.theories.postsservice.models.PostModel;
 import com.br.geek.theories.postsservice.repositorys.PostRepository;
-import com.br.geek.theories.postsservice.services.PostsService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
