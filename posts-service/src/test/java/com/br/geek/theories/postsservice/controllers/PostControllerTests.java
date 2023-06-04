@@ -1,4 +1,4 @@
-package com.br.geek.theories.postsservice;
+package com.br.geek.theories.postsservice.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,7 +39,6 @@ public class PostControllerTests {
 
   @BeforeEach
   public void setup() {
-    // Configurar o comportamento do mock do PostRepository
     List<PostModel> posts = new ArrayList<>();
     posts.add(new PostModel(
         "1",
