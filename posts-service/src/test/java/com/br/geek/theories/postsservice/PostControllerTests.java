@@ -61,6 +61,7 @@ public class PostControllerTests {
         new Date(System.currentTimeMillis())
       )
     );
+    
     Mockito.when(repository.findAll()).thenReturn(posts);
   }
 

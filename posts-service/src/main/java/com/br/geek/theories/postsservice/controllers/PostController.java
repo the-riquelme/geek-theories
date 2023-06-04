@@ -10,19 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.geek.theories.postsservice.models.PostModel;
-import com.br.geek.theories.postsservice.repositorys.PostRepository;
+import com.br.geek.theories.postsservice.services.PostsService;
 
 @RestController
 @RequestMapping("posts")
 public class PostController {
-  
+
   @Autowired
-	private PostRepository repository;
+  private PostsService service;
 
 	@GetMapping("/all")
 	public ResponseEntity<List<PostModel>> getAllPosts() {
-    var posts = repository.findAll();
-
+    var posts = service.findAllPosts();
     return new ResponseEntity<>(posts, HttpStatus.OK);
 	}
   
