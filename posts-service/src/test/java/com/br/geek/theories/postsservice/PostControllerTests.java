@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import com.br.geek.theories.postsservice.models.PostModel;
-import com.br.geek.theories.postsservice.repositorys.PostRepository;
+import com.br.geek.theories.postsservice.services.PostsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.junit.Assert.assertEquals;
@@ -35,7 +35,7 @@ public class PostControllerTests {
   ObjectMapper objectMapper;
 
   @MockBean
-  PostRepository repository;
+  private PostsService service;
 
   @BeforeEach
   public void setup() {
@@ -62,7 +62,7 @@ public class PostControllerTests {
       )
     );
     
-    Mockito.when(repository.findAll()).thenReturn(posts);
+    Mockito.when(service.findAllPosts()).thenReturn(posts);
   }
 
   @Test
@@ -71,7 +71,7 @@ public class PostControllerTests {
       .andExpect(status().isOk())
       .andReturn();
 
-    String expectedResponseBody = objectMapper.writeValueAsString(repository.findAll());
+    String expectedResponseBody = objectMapper.writeValueAsString(service.findAllPosts());
     String responseBody = result.getResponse().getContentAsString(StandardCharsets.UTF_8);
 
     assertEquals(expectedResponseBody, responseBody);
