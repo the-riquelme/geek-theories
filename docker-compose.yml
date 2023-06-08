@@ -18,17 +18,26 @@ services:
     networks:
       - geek-theories-network
 
+  config-server:
+    image: maven:3.8.4-openjdk-17-slim
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - 8889
+    working_dir: /server
+    command: sh -c "cd /server && mvn spring-boot:run"
+    user: root
+    volumes:
+      - ./config-server:/server
+    networks:
+      - geek-theories-network
+
   posts-service:
     image: maven:3.8.4-openjdk-17-slim
     restart: always
     environment:
       TZ: America/Sao_Paulo
-      SPRING.DATASOURCE.URL: jdbc:mysql://posts-db:3306/posts_service?useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
-      SPRING.DATASOURCE.USERNAME: root
-      SPRING.DATASOURCE.PASSWORD: senhaForte123
-      SPRING.FLYWAY.URL: jdbc:mysql://posts-db:3306/posts_service?useSSL=false&serverTimezone=UTC&enabledTLSProtocols=TLSv1.2
-      SPRING.FLYWAY.USER: root
-      SPRING.FLYWAY.PASSWORD: senhaForte123
     ports:
       - 8000:8000
     volumes:
@@ -37,6 +46,7 @@ services:
     command: sh -c "cd /app && mvn spring-boot:run"
     depends_on:
       - posts-db
+      - config-server
     user: root
     networks:
       - geek-theories-network
