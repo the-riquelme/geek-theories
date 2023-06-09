@@ -17,6 +17,8 @@ spring:
         uri: lb://posts-service
         predicates:
         - Path=/posts-service/**
+        filters:
+        - StripPrefix=1
       - id: gateway-service
         uri: lb://gateway-service
         predicates:
