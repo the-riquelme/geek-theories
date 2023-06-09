@@ -30,8 +30,8 @@ public class PostController {
 	}
 
   @GetMapping("/configs")
-	public ResponseEntity<PostsServiceConfig> getConfigs() {
-    return new ResponseEntity<>(config, HttpStatus.OK);
+	public ResponseEntity<String> getConfigs() {
+    return new ResponseEntity<>(config.getGreeting(), HttpStatus.OK);
 	}
   
 }
