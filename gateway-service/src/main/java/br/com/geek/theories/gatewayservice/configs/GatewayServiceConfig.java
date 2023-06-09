@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class GatewayServiceConfig {
 
-  @Bean
-	RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
+	@Bean
+	public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route(p -> p.path("/get")
 							.filters(f -> f
@@ -20,5 +20,5 @@ public class GatewayServiceConfig {
 						.uri("lb://posts-service"))
 				.build();
 	}
-
+  
 }
