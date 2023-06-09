@@ -16,6 +16,21 @@ services:
     networks:
       - geek-theories-network
 
+  discovery-server:
+    image: maven:3.8.4-openjdk-17-slim
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - 8761:8761
+    working_dir: /server
+    command: sh -c "cd /server && mvn clean && mvn spring-boot:run"
+    user: root
+    volumes:
+      - ./discovery-server:/server
+    networks:
+      - geek-theories-network
+
   posts-db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -39,7 +54,7 @@ services:
     environment:
       TZ: America/Sao_Paulo
     ports:
-      - 8000:8000
+      - 8000
     volumes:
       - ./posts-service:/app
     working_dir: /app
@@ -47,6 +62,7 @@ services:
     depends_on:
       - posts-db
       - config-server
+      - discovery-server
     user: root
     networks:
       - geek-theories-network
