@@ -13,6 +13,10 @@ import com.br.geek.theories.postsservice.configs.PostsServiceConfig;
 import com.br.geek.theories.postsservice.models.PostModel;
 import com.br.geek.theories.postsservice.services.PostsService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Posts endpoint")
 @RestController
 @RequestMapping("posts")
 public class PostController {
@@ -23,12 +27,14 @@ public class PostController {
   @Autowired
   private PostsService service;
 
+  @Operation(summary = "Find all posts in database")
 	@GetMapping("/all")
 	public ResponseEntity<List<PostModel>> getAllPosts() {
     var posts = service.findAllPosts();
     return new ResponseEntity<>(posts, HttpStatus.OK);
 	}
 
+  @Operation(summary = "Find all configs of server")
   @GetMapping("/configs")
 	public ResponseEntity<String> getConfigs() {
     return new ResponseEntity<>(config.getGreeting(), HttpStatus.OK);
