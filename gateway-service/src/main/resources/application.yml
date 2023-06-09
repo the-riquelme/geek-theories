@@ -7,3 +7,19 @@ eureka:
 spring:
   application:
     name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: posts-service
+        uri: lb://posts-service
+        predicates:
+        - Path=/posts-service/**
+      # - id: gateway-service
+      #   uri: lb://gateway-service
+      #   predicates:
+      #   - Path=/v3/api-docs/**
+      #   filters:
+      #   - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
