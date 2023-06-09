@@ -28,6 +28,8 @@ services:
     user: root
     volumes:
       - ./discovery-server:/server
+    depends_on:
+      - config-server
     networks:
       - geek-theories-network
 
@@ -43,6 +45,9 @@ services:
     user: root
     volumes:
       - ./gateway-server:/server
+    depends_on:
+      - config-server
+      - discovery-server
     networks:
       - geek-theories-network
 
