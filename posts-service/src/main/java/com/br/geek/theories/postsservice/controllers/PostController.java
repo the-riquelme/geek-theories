@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.geek.theories.postsservice.configs.PostsServiceConfig;
 import com.br.geek.theories.postsservice.models.PostModel;
 import com.br.geek.theories.postsservice.services.PostsService;
 
@@ -17,12 +18,20 @@ import com.br.geek.theories.postsservice.services.PostsService;
 public class PostController {
 
   @Autowired
+  private PostsServiceConfig config;
+
+  @Autowired
   private PostsService service;
 
 	@GetMapping("/all")
 	public ResponseEntity<List<PostModel>> getAllPosts() {
     var posts = service.findAllPosts();
     return new ResponseEntity<>(posts, HttpStatus.OK);
+	}
+
+  @GetMapping("/configs")
+	public ResponseEntity<PostsServiceConfig> getConfigs() {
+    return new ResponseEntity<>(config, HttpStatus.OK);
 	}
   
 }
