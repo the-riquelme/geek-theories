@@ -31,6 +31,21 @@ services:
     networks:
       - geek-theories-network
 
+  gateway-service:
+    image: maven:3.8.4-openjdk-17-slim
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - 8765:8765
+    working_dir: /server
+    command: sh -c "cd /server && mvn clean && mvn spring-boot:run"
+    user: root
+    volumes:
+      - ./gateway-server:/server
+    networks:
+      - geek-theories-network
+
   posts-db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
