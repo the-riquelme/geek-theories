@@ -5,7 +5,7 @@ spring:
     name: discovery-server
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: false
     service-url:
       defaultZone: http://discovery-server:8761/eureka
