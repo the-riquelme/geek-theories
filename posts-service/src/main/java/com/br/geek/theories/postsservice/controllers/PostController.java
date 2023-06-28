@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.geek.theories.postsservice.configs.PostsServiceConfig;
 import com.br.geek.theories.postsservice.models.PostModel;
 import com.br.geek.theories.postsservice.services.PostsService;
+import org.springframework.core.env.Environment;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,6 +21,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("posts")
 public class PostController {
+
+  @Autowired
+  private Environment environment;
 
   @Autowired
   private PostsServiceConfig config;
